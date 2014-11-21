@@ -8,6 +8,8 @@ shinyUI(fluidPage(
       
       fileInput(inputId = 'zooTs', label = 'rds file', multiple = FALSE),
       
+      numericInput('id', label = 'Time-series number', value = 1),
+      
       selectInput('formula',
                   label = 'Formula',
                   choices = list('trend',
@@ -22,7 +24,7 @@ shinyUI(fluidPage(
       
       numericInput("order", label = 'Harmonic order', value = 1),
 
-      numericInput("breaks", label = 'Number of breaks allowed', value = NULL),
+      numericInput("breaks", label = 'Number of breaks allowed', value = -1),
 
       sliderInput('h', label = 'minimal segment size', min = 0, max = 1, value = 0.15, step = 0.05)
       
