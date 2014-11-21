@@ -20,8 +20,10 @@ bfastIR <- function(x, order=1, formula = response ~ trend + harmon, breaks = NU
   ts <- bfastts(data = x, dates = index(x), type = 'irregular')
   pp <- bfastpp(ts, order = order, stl = stl)
   breaks <- breakpoints(formula = formula, data = pp, breaks = breaks, h = h)
-  out <- list(zoo = x,
+  out <- list(df = pp,
               breaks = breaks)
   class(out) <- 'bfastIR'
   return(out)
+  
+  # TODO: Expand that function to export regression lines coefficients between segments
 }
