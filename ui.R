@@ -1,12 +1,14 @@
 library(shiny)
 
 shinyUI(fluidPage(
-  titlePanel("bfastApp"),
+  titlePanel("bfast Application"),
+  p('Interactive tool for irregular time-series segmentation'),
+  em('Loïc Dutrieux'),
   
   sidebarLayout(
     sidebarPanel(
       
-      fileInput(inputId = 'zooTs', label = 'rds file', multiple = FALSE),
+      fileInput(inputId = 'zooTs', label = 'rds file', multiple = FALSE, accept = '.rds'),
       
       uiOutput("ui"),
       
@@ -34,6 +36,8 @@ shinyUI(fluidPage(
     ),
     
     mainPanel(plotOutput("bfastPlot"),
-              p('Work in progress'))
-  )
-))
+              br(),
+              br(),
+              p('The bfastApp allows you to interactively optimize parameters selection when looking for break points in an irregular time-series. The tool integrates well with the', a("bfastSpatial R package", href = "https://github.com/dutri001/bfastSpatial"), '. See', code('?zooExtract'), 'for creating the RDS files required by the App.'))
+  
+)))

@@ -10,7 +10,11 @@ source('R/ggplot.bfastIR.R')
 shinyServer(function(input, output) {
   
   output$ui <- renderUI({
-    zooTs <- readRDS(input$zooTs$datapath)
+    zooTs <- input$zooTs
+    if (is.null(zooTs))
+      return(NULL)
+    
+    zooTs <- readRDS(zooTs$datapath)
         
     n <- ncol(zooTs)        
     selectInput("id",
@@ -22,8 +26,12 @@ shinyServer(function(input, output) {
     
   output$bfastPlot <- renderPlot({
       
+      zooTs <- input$zooTs
+      if (is.null(zooTs))
+        return(NULL)
       
-      zooTs <- readRDS(input$zooTs$datapath)
+      zooTs <- readRDS(zooTs$datapath)
+      
       
       id <- as.numeric(input$id)
       
@@ -48,7 +56,7 @@ shinyServer(function(input, output) {
       breakpts <- bfastIR(x = x, order = order, formula = formula, breaks = breaks, h = h)
       
       # plot results
-      ggplot.bfastIR(breakpts)    
+      ggplot(breakpts)    
 
       
     })
