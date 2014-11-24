@@ -8,18 +8,29 @@ source('R/ggplot.bfastIR.R')
 
 
 shinyServer(function(input, output) {
+  
+  output$ui <- renderUI({
+    zooTs <- readRDS(input$zooTs$datapath)
+        
+    n <- ncol(zooTs)        
+    selectInput("id",
+                label = "Time Series Number", 
+                choices = as.list(as.character(seq(1,n))),
+                selected = '1')
+
+  })
     
   output$bfastPlot <- renderPlot({
       
       
       zooTs <- readRDS(input$zooTs$datapath)
       
+      id <- as.numeric(input$id)
+      
       formula <- switch(input$formula,
                         'trend' = response ~ trend,
                         'trend + harmon' = response ~ trend + harmon,
                         'harmon' = response ~ harmon)
-      
-      id <- input$id
       
       order <- input$order
       

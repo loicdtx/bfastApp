@@ -8,7 +8,7 @@ shinyUI(fluidPage(
       
       fileInput(inputId = 'zooTs', label = 'rds file', multiple = FALSE),
       
-      numericInput('id', label = 'Time-series number', value = 1),
+      uiOutput("ui"),
       
       selectInput('formula',
                   label = 'Formula',
