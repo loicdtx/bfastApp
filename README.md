@@ -5,7 +5,7 @@
 
 The application particularly focuses on irregular time-series, extracted from multi-temporal remote sensing data such as Landsat time-series. An integration with the bfastSpatial package makes it easy to extract the objects that need to be uploaded to the app. Below is a quick tutorial on how to use the app.
 
-First if you have not yet installed the bfastSpatial package, you should do so by running the following command.
+First if you have not yet installed the [bfastSpatial](https://github.com/dutri001/bfastSpatial) package, you should do so by running the following command.
 
 ```r
 devtools::install_github('dutri001/bfastSpatial')
