@@ -19,11 +19,11 @@ library(bfastSpatial)
 data(tura)
 plot(tura, 3)
 
-# The tura object does ot have time written to the z dimension so we need to do that
+# In case an object does not have time written to the z dimension, it can be done as follows
 setZ(tura, getSceneinfo(names(tura))$date)
 ```
 
-We will extract sample time-series using the `zooExtract()` function of the bfastSpatial package. The function works by extracting the time-series of individual pixels at locations specified by a SpatialPoints object. Therefore we need to generate that object since we do have one yet. However, such file could come from a shapefile for instance containing reference in-situ data. A random sample can be achieved using the `sampleRegular()` function from the raster package.
+We will extract sample time-series using the `zooExtract()` function of the bfastSpatial package. The function works by extracting the time-series of individual pixels at locations specified by a SpatialPoints object. Therefore we need to generate that object since we do have one yet. However, such file could come from a shapefile for instance containing reference in-situ data. A regular sample can be achieved using the `sampleRegular()` function from the raster package.
 
 ```r
 # Generate SpatialPoints object and visualize
@@ -52,6 +52,6 @@ library(shiny)
 runGitHub(repo = 'bfastApp', username = 'dutri001')
 ```
 
-Point to the turaZoo.rds file, we have saved in an earlier step, and you're ready to explore your time-series objects.
+Point to the turaZoo.rds file that you have saved in an earlier step, and you're ready to explore your time-series objects.
 
 ![app](figs/app.png)
