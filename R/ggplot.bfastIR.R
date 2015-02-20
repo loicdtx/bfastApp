@@ -8,7 +8,10 @@ ggplot.bfastIR <- function(x, seg = TRUE) {
   
   gg <- ggplot(ggdf, aes(time, response)) +
     geom_line() +
-    geom_vline(xintercept = xIntercept, color = 'red', linetype = 'dashed')
+    geom_point(color = 'green') +
+    geom_vline(xintercept = xIntercept, color = 'red', linetype = 'dashed') +
+    scale_x_continuous(breaks=floor(min(ggdf$time)):ceiling(max(ggdf$time))) +
+    theme(axis.text.x = element_text(angle = 60, hjust = 1))
   
   if(seg) {
     # Segments on time column
