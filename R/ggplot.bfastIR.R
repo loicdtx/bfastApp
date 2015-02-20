@@ -13,7 +13,7 @@ ggplot.bfastIR <- function(x, seg = TRUE, order, formula) {
     scale_x_continuous(breaks=floor(min(ggdf$time)):ceiling(max(ggdf$time))) +
     theme(axis.text.x = element_text(angle = 60, hjust = 1))
   
-  if(seg) {
+  if(seg && !is.na(x$breaks$breakpoints)) {
     # Segments on time column
     segments <- c(ggdf$time[c(1,x$breaks$breakpoints, nrow(ggdf))])
     for(i in seq_along(segments[-1])) {

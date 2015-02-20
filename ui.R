@@ -35,7 +35,11 @@ shinyUI(fluidPage(
         
     ),
     
-    mainPanel(plotOutput("bfastPlot"),
+    mainPanel(
+      tabsetPanel(
+        tabPanel("Plot", plotOutput("bfastPlot")),
+        tabPanel("Summary", verbatimTextOutput("summaryTable"))
+      ),
               br(),
               br(),
               p('The bfastApp allows you to interactively optimize parameters selection when looking for break points in an irregular time-series. The tool integrates well with the', a("bfastSpatial R package", href = "https://github.com/dutri001/bfastSpatial"), '. See', code('?zooExtract'), 'for creating the RDS files required by the App.'))
