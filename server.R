@@ -56,7 +56,7 @@ shinyServer(function(input, output) {
       breakpts <- bfastIR(x = x, order = order, formula = formula, breaks = breaks, h = h)
       
       # plot results
-      ggplot(breakpts)    
+      ggplot(breakpts, formula = formula, order = order)    
 
       
     })

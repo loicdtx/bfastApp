@@ -1,4 +1,4 @@
-ggplot.bfastIR <- function(x, seg = TRUE) {
+ggplot.bfastIR <- function(x, seg = TRUE, order, formula) {
   
   ggdf <- x$df
   ggdf[,'breaks'] <- NA
@@ -17,8 +17,16 @@ ggplot.bfastIR <- function(x, seg = TRUE) {
     # Segments on time column
     segments <- c(ggdf$time[c(1,x$breaks$breakpoints, nrow(ggdf))])
     for(i in seq_along(segments[-1])) {
-      dfsub <- subset(ggdf, time <= segments[i + 1] & time >= segments[i])
-      gg <- gg + stat_smooth(method = "lm", data = dfsub, se = FALSE)
+      predTs <- bfastts(rep(NA, ncol(ggdf)), date_decimal(ggdf$time), type = 'irregular')
+      predDf <- bfastpp(predTs, order = order, na.action = na.pass)
+      predDfSub <- subset(predDf, time <= segments[i + 1] & time >= segments[i])
+      trainDfSub <- subset(ggdf, time <= segments[i + 1] & time >= segments[i])
+      model <- lm(formula = formula, data = trainDfSub)
+      predDfSub$pred <- predict(model, newdata = predDfSub)
+      
+      gg <- gg + geom_line(data = predDfSub, aes(x = time, y = pred), color = 'blue')
+      
+      
     }    
   }
   gg
