@@ -3,6 +3,7 @@ library(zoo)
 library(bfast)
 library(strucchange)
 library(ggplot2)
+library(lubridate)
 source('R/bfastIR.R')
 source('R/ggplot.bfastIR.R')
 
