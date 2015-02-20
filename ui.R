@@ -38,7 +38,7 @@ shinyUI(fluidPage(
     mainPanel(
       tabsetPanel(
         tabPanel("Plot", plotOutput("bfastPlot")),
-        tabPanel("Summary", verbatimTextOutput("summaryTable"))
+        tabPanel("Summary", tableOutput("summaryTable"))
       ),
               br(),
               br(),

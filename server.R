@@ -72,13 +72,19 @@ shinyServer(function(input, output) {
   })
   
   # Second output (table)
-  output$summaryTable <- renderDataTable({
-    NULL
-#     if (is.na(breakpts$breaks$breakpoints))
-#       return(NULL)
-#     df <- breakpts$df
-#     segments <- c(df$time[c(1,breakpts$breaks$breakpoints, nrow(df))])
-#     df$segment <- 
+  output$summaryTable <- renderTable({
+    breakpts <- breakpts()
+    if (is.na(breakpts$breaks$breakpoints))
+      return(NULL)
+    df <- breakpts$df
+    b <- breakpts$breaks$breakpoints
+    segments <- c(df$time[c(1,b, nrow(df))])
+    dfOut <- data.frame("Segment.Number" = numeric(), "Count.obs" = numeric(), "Length" = numeric())
+    for (i in 1:(length(segments) - 1)) {
+      subDf <- subset(df, time <= segments[i + 1] & time >= segments[i])
+      dfOut[i,] <- c(i, nrow(subDf), diff(range(subDf$time)))
+    }
+    return(dfOut)  
   })
   
   
