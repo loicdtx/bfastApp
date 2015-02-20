@@ -28,7 +28,7 @@ shinyUI(fluidPage(
 
       numericInput("breaks", label = 'Number of breaks allowed', value = -1),
 
-      sliderInput('h', label = 'minimal segment size', min = 0, max = 1, value = 0.15, step = 0.05)
+      sliderInput('h', label = 'minimal segment size', min = 0, max = 1, value = 0.15, step = 0.01)
       
       # character input for stl ??
       
