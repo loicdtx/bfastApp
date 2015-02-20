@@ -43,7 +43,7 @@ Now the file is stored in your working directory, ready to be opened in the appl
 
 The app requires a set of packages that need to be installed prior to running it. In case you do not have installed you, run the following command.
 ```r
-install.packages('shiny', 'zoo', 'bfast', 'strucchange', 'ggplot2')
+install.packages('shiny', 'zoo', 'bfast', 'strucchange', 'ggplot2', 'lubridate')
 ```
 
 The app can be ran more or less directly from github, using the `runGitHub` function.
