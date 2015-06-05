@@ -1,14 +1,13 @@
 library(shiny)
 
 shinyUI(fluidPage(
-  titlePanel("bfast Application"),
+  titlePanel("breakpoints Application"),
   p('Interactive tool for irregular time-series segmentation'),
-  em('Loïc Dutrieux'),
+  em('by, ', a('Loïc Dutrieux',  href = 'http://www.loicdutrieux.com')),
   
   sidebarLayout(
     sidebarPanel(
       
-      fileInput(inputId = 'zooTs', label = 'rds file', multiple = FALSE, accept = '.rds'),
       
       uiOutput("ui"),
       

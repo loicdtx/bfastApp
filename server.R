@@ -6,16 +6,13 @@ library(ggplot2)
 library(lubridate)
 source('R/bfastIR.R')
 source('R/ggplot.bfastIR.R')
-
+zooTs <- readRDS('data/Au_Tum_Zoo.rds')
 
 shinyServer(function(input, output) {
   
   output$ui <- renderUI({
-    zooTs <- input$zooTs
-    if (is.null(zooTs))
-      return(NULL)
     
-    zooTs <- readRDS(zooTs$datapath)
+    
         
     n <- ncol(zooTs)        
     selectInput("id",
@@ -27,11 +24,11 @@ shinyServer(function(input, output) {
   
   ## Do the calculations outside of output object in a reactive expression
   breakpts <- reactive({
-    zooTs <- input$zooTs
+    #zooTs <- input$zooTs
     if (is.null(zooTs))
       return(NULL)
     
-    zooTs <- readRDS(zooTs$datapath)
+    #zooTs <- readRDS(zooTs$datapath)
     
     
     id <- as.numeric(input$id)
