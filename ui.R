@@ -1,9 +1,10 @@
 library(shiny)
 
 shinyUI(fluidPage(
-  titlePanel("bfast Application"),
+  titlePanel("breakpoints Application"),
   p('Interactive tool for irregular time-series segmentation'),
-  em('Loïc Dutrieux'),
+  em('by, ', a('Loïc Dutrieux',  href = 'http://www.loicdutrieux.com')),
+  
   
   sidebarLayout(
     sidebarPanel(
@@ -42,6 +43,6 @@ shinyUI(fluidPage(
       ),
               br(),
               br(),
-              p('The bfastApp allows you to interactively optimize parameters selection when looking for break points in an irregular time-series. The tool integrates well with the', a("bfastSpatial R package", href = "https://github.com/dutri001/bfastSpatial"), '. See', code('?zooExtract'), 'for creating the RDS files required by the App.'))
+              p('The breakpoints app allows you to interactively optimize parameters selection when looking for break points in an irregular time-series. The tool integrates well with the', a("bfastSpatial R package", href = "https://github.com/dutri001/bfastSpatial"), '. See', code('?zooExtract'), 'for creating the RDS files required by the App.'))
   
 )))
